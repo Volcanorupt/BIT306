@@ -1,0 +1,54 @@
+<router-outlet></router-outlet>
+<mat-toolbar color="primary">
+  <span routerLink='/'>Private Corona Vaccination System</span>
+  <span class="example-spacer"></span>
+  <button mat-flat-button class="patient-buttons" routerLink='/'>Logout</button>
+</mat-toolbar>
+
+
+<div class="card container">
+  <h1 style="text-align: center;">Select your vaccine</h1>
+  <div class="card-body">
+    <table class = "table vacTable">
+      <thead>
+        <tr>
+          <th scope="col">Vaccine ID</th>
+          <th scope="col">Vaccine Name</th>
+          <th scope="col">Manufacturer</th>
+          <th>Selection</th>
+        </tr>
+      </thead>
+      <tr *ngFor="let item of storedVaccines">
+        <th>{{item.vaccineID}}</th>
+        <th>{{item.vaccineName}}</th>
+        <th>{{item.manufacturer}}</th>
+        <th><input type="radio" name="vacSelection" value="{{item.vaccineName}}" (change)="getRelatedCentres(item.vaccineName)"></th>
+      </tr>
+    </table>
+  </div>
+</div>
+
+
+<div class="card container" *ngIf="vacSelection !== ''" >
+  <div class="card-body">
+    <h1 style="text-align: center;">Select your vaccination centre</h1>
+    <table class = "table vacTable">
+      <thead>
+        <tr>
+          <th scope="col">Centre ID</th>
+          <th scope="col">Centre Name</th>
+          <th scope="col">Address</th>
+          <th>Selection</th>
+        </tr>
+      </thead>
+      <tr *ngFor="let item of filteredCentres" >
+        <th>{{item.centreId}}</th>
+        <th>{{item.centreName}}</th>
+        <th>{{item.address}}</th>
+        <th><input type="radio" name="centreSelection" value="{{item.centreName}}"></th>
+      </tr>
+    </table>
+  </div>
+  <button mat-flat-button class="patient-buttons" routerLink='/batch-Info'>Proceed</button>
+</div>
+

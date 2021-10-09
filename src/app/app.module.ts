@@ -11,18 +11,26 @@ import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { AppComponent } from './app.component';
 import { AlertComponent } from './_components';
 import { HomeComponent } from './home';
+import { PatientRegisterComponent } from './account/patient-register/patient-register.component';
+import { ReqAppointmentComponent } from './_components/req-appointment/req-appointment.component';
+import { ViewVaccineBatchComponent } from './_components/view-vaccine-batch/view-vaccine-batch.component';
+import { MaterialModule } from './materials/material.module';
 
 @NgModule({
     imports: [
         BrowserModule,
         ReactiveFormsModule,
         HttpClientModule,
-        AppRoutingModule
+        AppRoutingModule,
+        ReqAppointmentComponent,
+        ViewVaccineBatchComponent,
+        MaterialModule
     ],
     declarations: [
         AppComponent,
         AlertComponent,
-        HomeComponent
+        HomeComponent,
+        PatientRegisterComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

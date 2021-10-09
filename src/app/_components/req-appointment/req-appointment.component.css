@@ -1,0 +1,12 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.vacTable{
+  font-size: 1.5em;
+}
+
+.vacTable th{
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
